@@ -1,2 +1,2 @@
-# Assignment
-Web technology
+# WTAS3
+jQuery and ajax

@@ -1,55 +1,60 @@
+let url = "https://davids-restaurant.herokuapp.com/menu_items.json"
 
-var row = 1;
-var btn = document.getElementById("btn");
-btn.addEventListener("click",displayDetails);
+let menu_items = null;
 
-console.log("###########");
+$("document").ready(function(){
+    $.get(url,function(data, status){
+        if (status == "success"){
+            menu_items = data.menu_items;
+            for (const key in data.menu_items) {
+                let opt = document.createElement("option");
+                opt.textContent = data.menu_items[key].name;
+                opt.value = key; 
+                document.querySelector('#restaurant').appendChild(opt);
+            }
+            createoptions();
+        }
+       
+    });
 
-function displayDetails(){
-		console.log("inside function");
-	var Name = document.getElementById("Name").value;
-	console.log(Name);
-	var MobileNo = document.getElementById('mobileNo').value;
-	console.log(MobileNo);
-	var address = document.getElementById('address').value;
-	console.log(address);
-	var email = document.getElementById('emailId').value;
-	console.log(email);
-	var dob = document.getElementById('dob').value;
-	console.log(dob);
-	var event1 = document.getElementById('optradio').value;
-	console.log(event1);
-	var food = document.getElementById('optcheckbox').value;
-	console.log(food);
-	var budget = document.getElementById('sel1').value;
-	console.log(budget);
-	if (!Name || !MobileNo || !address || !email || !dob || !event1 || !food || !budget){
-		alert("Please fill all the boxes");
-		return;
-	}
-	
-	 var display = document.getElementById("display");
-	 console.log("display");
-	 var newRow = display.insertRow(row);
-	 console.log("display2");
-	 var cell1 = newRow.insertCell(0);
-	 var cell2 = newRow.insertCell(1);
-	 var cell3 = newRow.insertCell(2);
-	 var cell4 = newRow.insertCell(3);
-	 var cell5 = newRow.insertCell(4);
-	 var cell6 = newRow.insertCell(5);
-	 var cell7 = newRow.insertCell(6);
-	 var cell8 = newRow.insertCell(7);
-	 
-	  cell1.innerHTML = Name;
-	  cell2.innerHTML = MobileNo;
-	  cell3.innerHTML = address;
-	  cell4.innerHTML = email;
-	  cell5.innerHTML = dob;
-	  cell6.innerHTML = event1;
-	  cell7.innerHTML = food;
-	  cell8.innerHTML = budget;
-	  
-	  row++;
-	  
+    function createoptions(){
+        let i=0;
+        if(menu_items != null){
+            for(const jsonobj of menu_items){
+                console.log(i++,jsonobj.name);
+                
+            }
+        }
+    }
+
+    
+document.querySelector("#restaurant").addEventListener("change",showdetails);
+
+function showdetails(e){
+    let index = e.target.value;
+    
+    if(menu_items != null){
+        let x = menu_items[index];
+        let pricesmall = x.price_small;
+        
+        if(pricesmall == null){
+            pricesmall = "Not available";
+        }
+        let descrp = x.description;
+        if(descrp == ""){
+            descrp = "Description not available";
+        }
+        document.querySelector("#menuname").textContent = x.name;
+        document.querySelector("#id").textContent = x.id;
+        document.querySelector("#sname").textContent = x.short_name;
+        document.querySelector("#descp").textContent = descrp;
+        document.querySelector("#psmall").textContent = pricesmall;
+        document.querySelector("#plarge").textContent = x.price_large;
+    }
+    document.getElementById("table").style.display = "block";
 }
+
+
+});
+
+

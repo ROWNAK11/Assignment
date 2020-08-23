@@ -1,108 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Welcome | Life Events</title>
-        <!-- Bootstrap Core CSS -->
-        <link href="css/bootstrap.css" rel="stylesheet">
-        <!-- Custom CSS -->
-        <link href="css/style.css" rel="stylesheet">
-        <!-- jQuery -->
-        <script src="js/jquery.js"></script>
-        <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
+        <title>Menu list</title>
+        <!-- CSS only -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <!-- JS, Popper.js, and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+       <style>
+           
+           
+            .container{
+                align-items: center;
+                justify-content: center; 
+                padding: 40px 40px;
+            }
+            #table{
+                display:none;
+            }
+            .cont{
+                padding-top: 30px;
+                text-align: center;
+            }
+            
+               
+                
+       </style>
     </head>
+    <body>
+        
+       
 
-    <body style="padding-top: 50px;">
-        <!-- Header -->
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>                        
-                    </button>
-                    <a class="navbar-brand" href="index.html">Life Events</a>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
-                        <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!--Header end-->
-
-        <div id="content">
-            <!--Main banner image-->
-            <div id = "banner_image">
-                <div class="container">	
-                    <center>
-                        <div id="banner_content">
-                            <h1>We Give Happiness.</h1>
-                            <p>10% OFF on Birthday Parties </p>
-                            <br/>
-                            <a  href="form.html" class="btn btn-danger btn-lg active">Register Now</a>
-                        </div>
-                    </center>
-                </div>
-            </div>
-            <!--Main banner image end-->
-
-            <!--Item categories listing-->
-            <div class="container">
-                <div class="row text-center" id="item_list">
-                    <div class="col-sm-4">
-                       
-                            <div class="thumbnail">
-                                <img src="bd.jpg" alt="">
-                                <div class="caption">
-                                    <h3>Birthday Event</h3>
-                                    <p>Thinking the best for you.</p>
-                                </div>
-                            </div> 
-                        
-                    </div>
-
-                    <div class="col-sm-4">
-                        <a href="products.html#watches" >
-                            <div class="thumbnail">
-                                <img src="wedding2.webp" alt="">
-                                <div class="caption">
-                                    <h3>Wedding Event</h3>
-                                    <p>All life’s best to you</p>
-                                </div>
-                            </div> 
-                        </a>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <a href="products.html#shirts" >
-                            <div class="thumbnail">
-                                <img src="party1.jpg" alt="">
-                                <div class="caption">
-                                    <h3>Party Event</h3>
-                                    <p>Enjoy.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!--Item categories listing end-->
-        </div>
-
-        <!--Footer-->
-        <footer>
-            <div class="container">
-                <center>
-                    <p>Copyright &copy; Life Events. All Rights Reserved  |  Contact Us: +91 90000 00000</p>	
-                </center>
-            </div>
-        </footer>
-        <!--Footer end-->
-
-    </body> 
+        <div class="cont">
+            <h1>Select the menu item from dropdown list to see its details</h1>
+          </div>
+          
+          <div class="container">
+            <select name="item restaurant-dropdown restaurant" class="custom-select custom-select-lg mb-3" id="restaurant">
+              <option value="">Select Menu</option>
+          </select>
+          <br>
+        
+          <table id="table" class="table table-striped table-responsive">
+            <tr>
+              <th>Name</th>
+              <td id="menuname"></td>
+            </tr>
+            <tr>
+              <th>ID</th>
+              <td id="id"></td>
+            </tr>
+            <tr>
+              <th>Short Name</th>
+              <td id="sname"></td>
+            </tr>
+            <tr>
+              <th>Description</th>
+              <td id="descp"></td>
+            </tr>
+            <tr>
+              <th>Price Small</th>
+              <td id="psmall"></td>
+            </tr>
+            <tr>
+              <th>Price Large</th>
+              <td id="plarge"></td>
+            </tr>
+          </table>
+        
+      
+          </div>
+        
+       
+        
+        
+        
+            
+        <script src="lib/jquery-3.5.1.min.js"></script>
+    <script src="script.js" defer></script>
+        
+    </body>
 </html>
